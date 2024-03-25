@@ -24,7 +24,7 @@ function newStudentTR(student) {
         $fioTD.textContent = student.fio;
         $facultyTD.textContent = student.faculty;
         $birthDayTD.textContent = `${student.getBirthDayString()} (${student.getAge()} лет)`;
-        $yearsLerningTD.textContent = student.getlernPeriod() //+ ' (' + student.getCourses() + ')'
+        $yearsLerningTD.textContent = student.getlernPeriod();
 
     $studentTR.append($fioTD)
     $studentTR.append($facultyTD)
@@ -61,6 +61,21 @@ $studentListData.forEach(elem => {
         columnDir = !columnDir
         render()
     })
+})
+
+document.getElementById('add-student').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    students.push(new Student(
+        document.getElementById('input-name').value,
+        document.getElementById('input-surname').value,
+        document.getElementById('input-lastname').value,
+        new Date(document.getElementById('input-birthDay').value),
+        Number(document.getElementById('yearOfEntry').value),
+        document.getElementById('input-faculty').value,
+
+    ))
+    render()
 })
 
 render();

@@ -15,6 +15,29 @@
 	<div class="container">
 
 		<h1 class="h1-title">Список студентов</h1>
+
+		<form class="mb-3 form" id="add-student" action="submit">
+			<div class="mb-3">
+				<input class="form-conrtol" type="text" placeholder="Фамилия" id="input-surname">
+			</div>
+			<div class="mb-3">
+				<input class="form-conrtol" type="text" placeholder="Имя" id="input-name">
+			</div>
+			<div class="mb-3">
+				<input class="form-conrtol" type="text" placeholder="Отчество" id="input-lastname">
+			</div>
+			<div class="mb-3">
+				<input class="form-conrtol" type="text" placeholder="Факультет" id="input-faculty">
+			</div>
+			<div class="mb-3">
+				<input class="form-conrtol" type="date" id="input-birthDay">
+			</div>
+			<div class="mb-3">
+				<input class="form-conrtol" type="number" id="yearOfEntry">
+			</div>
+			<button class="btn btn-primary">Добавить</button>
+		</form>
+
 		<table class="table">
 			<thead>
 				<th data-column="fio">Ф. И. О.</th>
