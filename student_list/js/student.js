@@ -9,9 +9,11 @@ export default class Student {
         this.faculty = faculty
     }
 
-    getFIO() {
-        return this.lastname + ' ' + this.name + ' ' + this.surename   
+    get fio() {
+        return this.lastname + ' ' + this.name + ' ' + this.surename  
     }
+
+    
 
     getBirthDayString() {
         const yyyy = this.birthDay.getFullYear();
@@ -23,13 +25,23 @@ export default class Student {
     }
 
     getlernPeriod() {
-        const currentDate = new Date().getFullYear() - this.yearOfEntry;
-
-        return currentDate;
+        return `${this.yearOfEntry} - ${new Date().getFullYear()} (${this.getCourses()})`; 
     }
 
-    getCours() {
+    getCourses() {
+       
+        let lerningStart = new Date(this.yearOfEntry, 8, 1); // Предполагаем, что поступление было 1 сентября указанного года
+        let courses = new Date().getFullYear() - lerningStart.getFullYear();
         
+        if (new Date().getMonth() < 8 || (new Date().getMonth() === 8 && new Date().getDate() < 1)) {
+            courses--; // Если текущая дата меньше 1 сентября, то студент еще не начал новый учебный год
+        }
+        
+        if (courses > 4) {
+            return 'Окончил';
+        } else {
+            return courses + ' курс';
+        }
     }
 
     getAge() {
